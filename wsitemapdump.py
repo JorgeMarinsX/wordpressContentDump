@@ -50,7 +50,7 @@ def extrair_conteudo_post(url_post):
         titulo = h1_element.get_text(strip=True) if h1_element else 'Sem título'
 
         # Localiza o container do conteúdo
-        content_div = soup.find(class_='textos')
+        content_div = soup.find(class_='elementor-widget-theme-post-content')
         if content_div:
             # Seleciona todas as tags <p> filhas
             paragraphs = content_div.find_all('p')
@@ -88,7 +88,7 @@ def main():
         todos_os_posts.append(dados_post)
 
     # Salva todos os posts em um único arquivo JSON
-    nome_arquivo_json = "content/posts_coletados_mm.json"
+    nome_arquivo_json = "content/posts_coletados.json"
     with open(nome_arquivo_json, 'w', encoding='utf-8') as f:
         json.dump(todos_os_posts, f, indent=2, ensure_ascii=False)
 
